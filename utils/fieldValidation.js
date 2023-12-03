@@ -42,4 +42,14 @@ const validateUpdateItem = (body) => {
      return schema.validate(body)
 }
 
-module.exports = { validatePassword, validateLogin, validateItem, validateUpdateItem }
+const validateDeleteItem = (body) => {
+     const schema = Joi.object(
+          {
+               userId: Joi.string().required(),
+               itemId: Joi.string().required()
+          }
+     )
+     return schema.validate(body)
+}
+
+module.exports = { validatePassword, validateLogin, validateItem, validateUpdateItem, validateDeleteItem }
