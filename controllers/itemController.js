@@ -57,7 +57,7 @@ const updateItem = async(req, res) => {
           if (!item) return res.status(400).json({message: "item does not exist"})
           if (item.userId != req.user.id) return res.status(403).json({message: "Error, Please Try Again"}) 
 
-          const updateItem = await Item.replaceOne({_id: req.body.itemId}, {"$set": req.body.items })
+          const updateItem = await Item.updateOne({_id: req.body.itemId}, {"$set": {items: req.body.items }})
           
           console.log(updateItem)
 
@@ -87,5 +87,6 @@ const deleteItem = async(req, res) => {
           res.status(500).json({message: error.message})
      }
 }
+
 
 module.exports = { getItems, postItem, updateItem, deleteItem }

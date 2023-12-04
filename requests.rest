@@ -11,10 +11,25 @@ Content-type: application/json
 }
 
 
-###
-GET http://localhost:3000/api/test?category=Snacks
-
 #####
+GET http://localhost:3000/api/user/me/wishlist?id=656c4d3aef4c2d379ceb0163
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
+
+####
+POST http://localhost:3000/api/user/me/wishlist
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
+
+{
+     "userId": "656c4d3aef4c2d379ceb0163",
+     "list": ["nothing"]
+}
+
+
+####
+GET http://localhost:3000/api/category?category=Snacks
+
+######
 GET http://localhost:3000/api/user/items
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
 
@@ -24,8 +39,19 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
 
 {
-     "userId": "656c59d1ba8f752977753cfb",
+     "userId": "656c4d3aef4c2d379ceb0163",
      "items":[1]
+}
+
+
+###
+DELETE http://localhost:3000/api/user/items
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
+
+{
+     "userId": "656c4d3aef4c2d379ceb0163",
+     "itemId": "656cae62f63005c2126ff30b"
 }
 
 
@@ -36,7 +62,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZ
 
 {
      "userId": "656c4d3aef4c2d379ceb0163",
-     "itemId": "zxczc",
+     "itemId": "656c4d3aef4c2d379ceb0163",
      "items":[1]
 }
 
@@ -61,7 +87,7 @@ GET http://localhost:3000/api/user/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTU5NjQ4Mn0.61jDT10cJzEBBV6i6hTLQDJvKB-VlcSUV8ktMm3A68Y
 
 
-####
+#####
 POST http://localhost:3000/api/user/create
 Content-Type: application/json
 
@@ -72,7 +98,7 @@ Content-Type: application/json
      "password": "admin123"
 }
 
-###
+####
 
 DELETE http://localhost:3000/api/user/delete
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmI2MDNmYmNlNGUyNjJjZjc2ZjU3ZCIsImlhdCI6MTcwMTUzNTgxM30._TSBB5W8RsmXaN6X8lX-vp2F79rshI8m36OfdTZ4OKY

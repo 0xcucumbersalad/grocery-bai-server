@@ -52,4 +52,47 @@ const validateDeleteItem = (body) => {
      return schema.validate(body)
 }
 
-module.exports = { validatePassword, validateLogin, validateItem, validateUpdateItem, validateDeleteItem }
+
+const validateWishList = (body) => {
+     const schema = Joi.object(
+          {
+               userId: Joi.string().required(),
+               list: Joi.array().required()
+          }
+     )
+     return schema.validate(body)
+}
+
+const validateDeleteWishlist = (body) => {
+     const schema = Joi.object(
+          {
+               userId: Joi.string().required(),
+               id: Joi.string().required()
+          }
+     )
+     return schema.validate(body)
+}
+
+const validateUpdateWishlist = (body) => {
+     const schema = Joi.object(
+          {
+               userId: Joi.string().required(),
+               id: Joi.string().required(),
+               list: Joi.array().required()
+          }
+     )
+     return schema.validate(body)
+}
+
+const validuserId = (body) => {
+     const schema = Joi.object(
+          {
+               userId: Joi.string().required()
+          }
+     )
+     return schema.validate(body)
+}
+
+
+module.exports = { validatePassword, validateLogin, validateItem, validateUpdateItem, validateDeleteItem, validateWishList
+, validuserId, validateDeleteWishlist, validateUpdateWishlist }

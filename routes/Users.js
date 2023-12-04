@@ -1,6 +1,6 @@
 
 const authenticateToken = require("../middleware/authenticateToken")
-const { getUser, registerUser, loginUser, updateUser, deleteUser } = require("../controllers/userController.js")
+const { getUser, registerUser, loginUser, updateUser, deleteUser } = require("../controllers/userController")
 const express = require("express")
 const app = express()
 const router = express.Router()
