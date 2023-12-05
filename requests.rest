@@ -22,12 +22,53 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZ
 
 {
      "userId": "656c4d3aef4c2d379ceb0163",
-     "list": ["nothing"]
+     "list": [
+               {
+               "_id": "656c12d6e305645d736fd635",
+               "category": "Snacks",
+               "product": {
+                    "title": "Mondelez Oreo Vanilla Cookies | 27.6g 9pcs",
+                    "price": 80,
+                    "image_url": "https://smmarkets.ph/media/catalog/product/2/0/20232695_oreo_vanilla_27.6g_x_9_pcs_copy_.png?optimize=low&bg-color=255%2C255%2C255&fit=bounds&height=300&width=300"
+               }
+               }
+     ]
 }
 
 
 ####
-GET http://localhost:3000/api/category?category=Snacks
+DELETE http://localhost:3000/api/user/me/wishlist
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
+
+{
+     "userId": "656c4d3aef4c2d379ceb0163",
+     "id": "656d64c29be7f4d376cdbbfe"
+}
+
+#######
+PUT http://localhost:3000/api/user/me/wishlist
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
+
+{
+     "userId": "656c4d3aef4c2d379ceb0163",
+     "id": "656d64d09be7f4d376cdbc03",
+     "list":[
+           {
+          "_id": "656c0b6be305645d736fc695",
+          "category": "Frozen Goods",
+          "product": {
+               "title": "Selecta Choco Almond Fudge Ice Cream - Cookies & Cream Ice Cream | 2L",
+               "price": 350,
+               "image_url": "https://smmarkets.ph/media/catalog/product/2/0/20520405-1.jpg?optimize=low&bg-color=255%2C255%2C255&fit=bounds&height=300&width=300"
+          }
+     }
+     ]
+}
+
+####
+GET http://localhost:3000/api/category?category=Apple
 
 ######
 GET http://localhost:3000/api/user/items
@@ -51,7 +92,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZ
 
 {
      "userId": "656c4d3aef4c2d379ceb0163",
-     "itemId": "656cae62f63005c2126ff30b"
+     "itemId": "656c693d4c2e203afab4865d"
 }
 
 
@@ -62,13 +103,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZ
 
 {
      "userId": "656c4d3aef4c2d379ceb0163",
-     "itemId": "656c4d3aef4c2d379ceb0163",
-     "items":[1]
+     "itemId": "656d65a00106dd24076f86e2",
+     "items":["nothing"]
 }
 
 
 ###
-GET http://localhost:3000/api/search?item=Red Horse
+GET http://localhost:3000/api/search?item=Apple
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiWWVzIiwiaWF0IjoxNzAxMzk3MTE5fQ.-tKE2Yzk5L39H7HQEBxlNPWA45BN-_geafP4Lp6a9lM
 
 

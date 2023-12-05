@@ -3,6 +3,9 @@ const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose")
 const { validateWishList, validateDeleteWishlist, validateUpdateWishlist } = require("../utils/fieldValidation")
 const Wishlist = require("../models/wishlist")
+const Link = require("../models/link")
+
+const crypto = require("node:crypto")
 
 const express = require("express")
 const app = express()
@@ -67,11 +70,9 @@ const updateWishlist = async (req, res) => {
           const wishlist = await Wishlist.findOne({_id: req.body.id})
           if (!wishlist) return res.status(404).json({message: "list doesn't exist"})
 
-          console.log(wishlist)
+          //console.log(wishlist)
           const updateList = await Wishlist.updateOne({_id: id, userId: req.body.userId}, { "$set": {list: req.body.list}})
 
-          console.log(updateList)
-          console.log(req.body)
 
           res.status(200).json({message: "Wishlist has been updated"})
 
@@ -82,10 +83,19 @@ const updateWishlist = async (req, res) => {
 
 const shareWishlist = async (req, res) => {
      try {
+          const id = new mongoose.Types.ObjectId(req.query.id)
+          if (req.query.id == null) return res.status(403).json({message : "wishlist_id is required"})
+          const wishlist = await Wishlist.findOne({_id: id})
+          if (!wishlist) return res.status(404).json({message: "list doesn't exist"})
 
+          const link = crypto.randomBytes(20).toString('hex')
+
+          const saveLink = await Link.create({wishlist_id: id, randomized: link})
+          
+          return res.status(200).json({link: `${process.env.APP_URI}?wish/${link}`})
      } catch (error) {
           res.status(500).json({message: error.message})
      }
 }
 
-module.exports = { getWishlist, createWishlist, deleteWishlist, updateWishlist }
+module.exports = { getWishlist, createWishlist, deleteWishlist, updateWishlist, shareWishlist }
