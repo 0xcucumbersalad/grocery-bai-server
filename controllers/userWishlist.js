@@ -92,7 +92,7 @@ const shareWishlist = async (req, res) => {
 
           const saveLink = await Link.create({wishlist_id: id, randomized: link})
           
-          return res.status(200).json({link: `${process.env.APP_URI}?wish/${link}`})
+          return res.status(200).json({link: `${process.env.APP_URI}/wish/${link}`})
      } catch (error) {
           res.status(500).json({message: error.message})
      }

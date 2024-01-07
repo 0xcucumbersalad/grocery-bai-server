@@ -68,7 +68,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZ
 }
 
 ####
-GET http://localhost:3000/api/category?category=Apple
+GET http://localhost:3000/api/category?category=Snacks
 
 ######
 GET http://localhost:3000/api/user/items
@@ -81,7 +81,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZ
 
 {
      "userId": "656c4d3aef4c2d379ceb0163",
-     "items":[1]
+     "items":[{
+      "title": "Mondelez Oreo Vanilla Cookies | 27.6g 9pcs",
+      "price": 80,
+      "image_url": "https://smmarkets.ph/media/catalog/product/2/0/20232695_oreo_vanilla_27.6g_x_9_pcs_copy_.png?optimize=low&bg-color=255%2C255%2C255&fit=bounds&height=300&width=300"
+    }]
 }
 
 
@@ -92,7 +96,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZ
 
 {
      "userId": "656c4d3aef4c2d379ceb0163",
-     "itemId": "656c693d4c2e203afab4865d"
+     "itemId": "6575b1221eb0ca3d9d23f0b8"
 }
 
 
@@ -153,3 +157,29 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZ
 {
      "password": "admin1234"
 }
+###
+POST http://localhost:3000/api/user/send
+Content-Type: application/json
+
+{
+     "email": "lenyajpatiarba@gmail.com"
+}
+
+####
+POST http://localhost:3000/api/user/reset
+Content-Type: application/json
+
+{
+     "email": "lenyajpatiarba@gmail.com",
+     "password": "admin123",
+     "otp": "748327"
+}
+
+
+####
+GET http://localhost:3000/api/user/me/wishlist/share?id=656d64d09be7f4d376cdbc03
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTU5NjQ4Mn0.61jDT10cJzEBBV6i6hTLQDJvKB-VlcSUV8ktMm3A68Y
+
+###
+
+GET http://localhost:3000/api/category?localhost:3000/api/category
