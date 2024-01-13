@@ -7,7 +7,8 @@ const itemSchema = new mongoose.Schema(
           dateCreated: {
                type: Date,
                default: new Date()
-          }
+          },
+          total: Number
      }
 )
 
