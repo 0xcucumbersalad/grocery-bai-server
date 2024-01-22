@@ -20,12 +20,22 @@ mongoose.connect(mongoString)
 
 const getItems = async(req, res) => {
      try {
+          
+          const itemId = req.query.itemId
+          
+          if(itemId == null) {
 
           const id = new mongoose.Types.ObjectId(req.user.id)
 
           const item = await Item.find({userId: id}, {__v: 0})
           if (item) return res.status(200).json({item})
           if (!item) return res.status(200).json({item})
+     }
+     else {
+          const item = await Item.find({_id: itemId}, {__v: 0})
+          if (item) return res.status(200).json({item})
+          if (!item) return res.status(200).json({item})
+     }
 
      } catch (error) {
           console.log(error)
@@ -37,7 +47,7 @@ const postItem = async(req, res) => {
      try {
           const { error } = validateItem(req.body)
           if (error) return res.status(400).json({message: error.details[0].message})
-          if (req.user.id != req.body.userId) return res.status(403).json({message: "Error, Please Try Again"})
+          //if (req.user.id != req.body.userId) return res.status(403).json({message: "Error, Please Try Again"})
 
           const total = []
 
@@ -48,6 +58,7 @@ const postItem = async(req, res) => {
           sum = total.reduce((a, b) => a + b, 0);
 
           const item = await Item.create({
+               userId: req.user.id,
                ...req.body,
                total: sum
           })

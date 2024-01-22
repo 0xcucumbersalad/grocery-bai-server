@@ -31,6 +31,8 @@ const getUser =  async (req, res) => {
 }
 
 const registerUser = async (req, res) => {
+     const random = Math.floor(Math.random() * 9213213) + 1;
+     let image_url = `https://api.dicebear.com/7.x/big-ears-neutral/svg?seed=${random}`
      try {
           const email = req.body.email
 
@@ -40,7 +42,8 @@ const registerUser = async (req, res) => {
           const user = await User.findOne({email: email})
           if (user) return res.status(409).json({error: true, message: "Email already exists"})
 
-          const register = await User.create({...req.body})
+
+          const register = await User.create({...req.body, image: image_url})
           res.status(201).json({error: false, message: "Account Created Successfully"})
 
      } catch (error) {
@@ -60,7 +63,7 @@ const loginUser = async (req, res) => {
           if (user.password != req.body.password) return res.status(400).json({"error": true, message: "Invalid Email Or Password"})
 
           const token = jwt.sign({id : user._id}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1hr'})
-          res.status(200).json({"token": token})
+          res.status(200).json({"token": token, "id": user._id})
 
      } catch (error) {
           res.status(500).json({message: error.message})
@@ -79,6 +82,20 @@ const updateUser = async (req, res) => {
 
           const update = await user.updateOne({ "$set": {password: req.body.password}})
           if (update) return res.status(200).json({message: "Password successfully updated"})
+
+     } catch (error) {
+          res.status(500).json({message: error.message})
+     }
+}
+
+
+const updateProfile = async (req, res) => {
+     try {
+
+          const user = await User.findOne( { _id: req.body.id} )
+          
+          const update = await user.updateOne({ "$set": {...req.body}})
+          if (update) return res.status(200).json({message: "User Account successfully updated"})
 
      } catch (error) {
           res.status(500).json({message: error.message})
@@ -143,4 +160,4 @@ const deleteUser = async (req, res) => {
      }
 }
 
-module.exports = { getUser, registerUser, loginUser, registerUser, updateUser, deleteUser, sendOTP, resetPassword }
+module.exports = { getUser, registerUser, loginUser, registerUser, updateUser, deleteUser, sendOTP, resetPassword, updateProfile }

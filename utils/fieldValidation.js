@@ -24,7 +24,8 @@ const validateLogin = (body) => {
 const validateItem = (body) => {
      const schema = Joi.object(
           {
-               userId: Joi.string().required(),
+               name: Joi.string().required(),
+               schedule: Joi.string().required(),
                items: Joi.array().required()
           }
      )
@@ -93,6 +94,16 @@ const validuserId = (body) => {
      return schema.validate(body)
 }
 
+const validateProduct = (body) => {
+     const schema = Joi.object(
+          {
+               category: Joi.string().required(),
+               userId: Joi.string().required(),
+               product: Joi.object().required()
+          }
+     )
+     return schema.validate(body)
+}
 
 module.exports = { validatePassword, validateLogin, validateItem, validateUpdateItem, validateDeleteItem, validateWishList
-, validuserId, validateDeleteWishlist, validateUpdateWishlist }
+, validuserId, validateDeleteWishlist, validateUpdateWishlist, validateProduct }

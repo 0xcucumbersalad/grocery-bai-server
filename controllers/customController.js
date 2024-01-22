@@ -1,7 +1,9 @@
 require("dotenv").config()
-const Model = require('../models/product')
+const CustomProduct = require("../models/customproduct")
 const mongoose = require("mongoose")
 const express = require("express")
+
+const {validateProduct} = require("../utils/fieldValidation")
 
 const app = express()
 const router = express.Router()
@@ -23,9 +25,9 @@ const getCategory = async (req, res) => {
           const category = req.query.category
 
 
-          if (category == null) return res.status(200).json(await Model.find({category: random_category[random]}).limit(100))
+          if (category) return res.status(200).json(await CustomProduct.find({category: category}).limit(100))
 
-          const data = await Model.find({category: category})
+          const data = await CustomProduct.find()
           res.status(200).json(data)
      }
      catch(error) {
@@ -45,9 +47,9 @@ const getCategory1 = async (req, res) => {
           const category = req.query.category
 
 
-          if (category == null) return res.status(200).json(await Model.find({category: random_category[random]}).limit(100))
+          if (category == null) return res.status(200).json(await CustomProduct.find({category: random_category[random]}).limit(100))
 
-          const data = await Model.find({category: category}).limit(20)
+          const data = await CustomProduct.find({category: category}).limit(20)
           res.status(200).json(data)
      }
      catch(error) {
@@ -55,10 +57,28 @@ const getCategory1 = async (req, res) => {
      }
 }
 
+const createProduct = async(req, res) => {
+     try {
+          const { error } = validateProduct(req.body)
+          if (error) return res.status(400).json({message: error.details[0].message})
+          //if (req.user.id != req.body.userId) return res.status(403).json({message: "Error, Please Try Again"})
+
+          const product = await CustomProduct.create({
+               ...req.body
+          })
+
+          res.status(200).json(product)
+     } catch (error) {
+          console.log(error)
+          res.status(500).json({message: error.message})
+     }
+}
+
+
 const searchProduct = async (req, res) => {
      const item = req.query.item
      try {
-          const data = await Model.find({
+          const data = await CustomProduct.find({
                "product.title": {
                     '$regex': item
                }
@@ -70,4 +90,4 @@ const searchProduct = async (req, res) => {
      }
 }
 
-module.exports = { getCategory, searchProduct, getCategory1 }
+module.exports = { getCategory, searchProduct, getCategory1, createProduct }

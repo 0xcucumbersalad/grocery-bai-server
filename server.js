@@ -8,6 +8,7 @@ const Products = require("./routes/Products")
 const Users = require("./routes/Users")
 const userItems = require("./routes/UserItems")
 const Wishlist = require("./routes/Wishlist")
+const CustomProduct = require('./routes/CustomProduct')
 
 
 app.use(express.json())
@@ -24,6 +25,7 @@ app.get("/wish/:link", (req, res) => {
 app.use("/api", Users)
 
 app.use("/api", Products)
+app.use("/api", CustomProduct)
 app.use("/api", userItems)
 app.use("/api/user/me", Wishlist)
 

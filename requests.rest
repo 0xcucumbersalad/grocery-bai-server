@@ -15,6 +15,26 @@ Content-type: application/json
 GET http://localhost:3000/api/user/me/wishlist?id=656c4d3aef4c2d379ceb0163
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
 
+
+#####
+POST http://localhost:3000/api/user/update
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
+Content-Type: application/json
+
+{"id": "65a91e228e15e34cb43a808f", "email": "jason3213123@gmail.com", "first_name": "Keon", "image": "", "last_name": "Kevin"}
+
+###
+POST http://localhost:3000/api/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
+Content-Type: application/json
+
+{
+    "category": "oten",
+    "product": {
+     "oten": "oten"
+    }
+}
+
 ####
 POST http://localhost:3000/api/user/me/wishlist
 Content-type: application/json
@@ -72,31 +92,17 @@ GET http://localhost:3000/api/category?category=Snacks
 
 ######
 GET http://localhost:3000/api/user/items
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwNTA5ODY5MywiZXhwIjoxNzA1MTAyMjkzfQ.y93cn-pxtuj8V3oZOr1dUxg37oN_mZ8ejksew4eclog
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwNTI0Mzg5NCwiZXhwIjoxNzA1MjQ3NDk0fQ.6CiQVHJ7FXHmVKiGcaNjIXekMYqHifX9PcreyO91wBw
 
-######
+########
 POST http://localhost:3000/api/user/items
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwNTA5ODY5MywiZXhwIjoxNzA1MTAyMjkzfQ.y93cn-pxtuj8V3oZOr1dUxg37oN_mZ8ejksew4eclog
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwNTI0Mzg5NCwiZXhwIjoxNzA1MjQ3NDk0fQ.6CiQVHJ7FXHmVKiGcaNjIXekMYqHifX9PcreyO91wBw
 
 {
-     "userId": "656c4d3aef4c2d379ceb0163",
+     "name": "OTEN NI SATANAS",
+     "schedule": "Monday",
      "items":[{
-      "title": "Mondelez Oreo Vanilla Cookies | 27.6g 9pcs",
-      "price": 80,
-      "image_url": "https://smmarkets.ph/media/catalog/product/2/0/20232695_oreo_vanilla_27.6g_x_9_pcs_copy_.png?optimize=low&bg-color=255%2C255%2C255&fit=bounds&height=300&width=300"
-    },
-    {
-      "title": "Mondelez Oreo Vanilla Cookies | 27.6g 9pcs",
-      "price": 80,
-      "image_url": "https://smmarkets.ph/media/catalog/product/2/0/20232695_oreo_vanilla_27.6g_x_9_pcs_copy_.png?optimize=low&bg-color=255%2C255%2C255&fit=bounds&height=300&width=300"
-    },
-    {
-      "title": "Mondelez Oreo Vanilla Cookies | 27.6g 9pcs",
-      "price": 80,
-      "image_url": "https://smmarkets.ph/media/catalog/product/2/0/20232695_oreo_vanilla_27.6g_x_9_pcs_copy_.png?optimize=low&bg-color=255%2C255%2C255&fit=bounds&height=300&width=300"
-    },
-    {
       "title": "Mondelez Oreo Vanilla Cookies | 27.6g 9pcs",
       "price": 80,
       "image_url": "https://smmarkets.ph/media/catalog/product/2/0/20232695_oreo_vanilla_27.6g_x_9_pcs_copy_.png?optimize=low&bg-color=255%2C255%2C255&fit=bounds&height=300&width=300"
@@ -128,11 +134,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZ
 ###
 PUT http://localhost:3000/api/user/items
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWFkY2Y0YjAzZGE0ODVlZmEyNzE3YyIsImlhdCI6MTcwNDgzMjgzNywiZXhwIjoxNzA0ODM2NDM3fQ.cXNAO0OO4jZ2NfmMl2tvDzuMF9q4S1aBjWhvT8hUmEA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwNTI0Mzg5NCwiZXhwIjoxNzA1MjQ3NDk0fQ.6CiQVHJ7FXHmVKiGcaNjIXekMYqHifX9PcreyO91wBw
 
 {
-     "userId": "659adcf4b03da485efa2717c",
-     "itemId": "659db03ef1ae0cd4a2365e7c",
+     "userId": "656c4d3aef4c2d379ceb0163",
+     "itemId": "65a3febe6486e0a8be14cce4",
      "items":[{
       "title": "Mondelez Oreo Vanilla Cookies | 27.6g 9pcs",
       "price": 80,

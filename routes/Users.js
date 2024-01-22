@@ -1,6 +1,6 @@
 
 const authenticateToken = require("../middleware/authenticateToken")
-const { getUser, registerUser, loginUser, updateUser, deleteUser, sendOTP, resetPassword } = require("../controllers/userController")
+const { getUser, registerUser, loginUser, updateUser, deleteUser, sendOTP, resetPassword, updateProfile } = require("../controllers/userController")
 const express = require("express")
 const app = express()
 const router = express.Router()
@@ -9,6 +9,9 @@ const router = express.Router()
 router.get("/user/me", authenticateToken, getUser)
 
 router.post("/user/create", registerUser)
+
+router.post("/user/update", updateProfile, authenticateToken)
+
 
 router.post("/user/login", loginUser)
 

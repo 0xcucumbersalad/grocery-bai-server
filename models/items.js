@@ -3,6 +3,14 @@ const mongoose = require("mongoose")
 const itemSchema = new mongoose.Schema(
      {
           userId: mongoose.SchemaTypes.ObjectId,
+          name: {
+               type: String,
+               required: true
+          },
+          schedule: {
+               type: String,
+               required: true
+          },
           items: [],
           dateCreated: {
                type: Date,
