@@ -24,11 +24,12 @@ Content-Type: application/json
 {"id": "65a91e228e15e34cb43a808f", "email": "jason3213123@gmail.com", "first_name": "Keon", "image": "", "last_name": "Kevin"}
 
 ###
-POST http://localhost:3000/api/create
+POST http://localhost:3000/api/add_favorite
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
 Content-Type: application/json
 
 {
+    "userId": "656c4d3aef4c2d379ceb0163",
     "category": "oten",
     "product": {
      "oten": "oten"
