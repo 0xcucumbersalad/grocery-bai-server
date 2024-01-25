@@ -12,7 +12,7 @@ Content-type: application/json
 
 
 #####
-GET http://localhost:3000/api/user/me/wishlist?id=656c4d3aef4c2d379ceb0163
+GET http://localhost:3000/api/deleted_items
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0ZDNhZWY0YzJkMzc5Y2ViMDE2MyIsImlhdCI6MTcwMTYwMjA1M30.muWvxmH3V4DjnJmYqjGD_ZuNCsCD1uGfvDB_dKOE5xs
 
 

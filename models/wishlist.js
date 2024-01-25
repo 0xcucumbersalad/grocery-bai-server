@@ -6,7 +6,7 @@ const dataSchema = new mongoose.Schema(
                type: mongoose.SchemaTypes.ObjectId,
                required: true
           },
-          list: {
+          items: {
                type: Array,
                required: true
           }

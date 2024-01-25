@@ -10,7 +10,7 @@ const userItems = require("./routes/UserItems")
 const Wishlist = require("./routes/Wishlist")
 const CustomProduct = require('./routes/CustomProduct')
 const Favorite = require('./routes/Favorite')
-
+const HistoryItem = require('./routes/History')
 
 app.use(express.json())
 
@@ -29,6 +29,7 @@ app.use("/api", Products)
 app.use("/api", CustomProduct)
 app.use("/api", Favorite)
 app.use("/api", userItems)
+app.use("/api", HistoryItem)
 app.use("/api/user/me", Wishlist)
 
 
